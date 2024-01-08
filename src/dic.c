@@ -6,7 +6,7 @@
 dico dictionnaire_vide()
 {
 	dico tmp = (dico)malloc(sizeof(struct lettre_s));
-	tmp->lettre = false;
+	tmp->terminal = false;
 	for(int i=0; i<26; i++)
 	{
 		(tmp->succ)[i] = NULL;
@@ -32,10 +32,10 @@ void ajouter_mot(dico dic, char* mot)  // Non fini. Problemes avec le NULL, poss
 		}
 	i++;
 	}
-	tmp->lettre = true;
+	tmp->terminal = true;
 }
 
-dico chercher(dico dic,char* mot){
+dico chercher_mot(dico dic,char* mot){
 	dico tmp = dic;
 	int i = 0;
 	while(mot[i] != '\0')
@@ -52,4 +52,11 @@ dico chercher(dico dic,char* mot){
 	i++;
 	}
 	return tmp;
+}
+void supprimer_dictionnaire(dico dic){
+	if (dic==NULL){return;}
+	for (int i=0;i<26;i++){
+		supprimer_dictionnaire(dic->succ[i]);
+	}
+	free(dic);
 }

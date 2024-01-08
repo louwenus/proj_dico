@@ -6,7 +6,7 @@
 
 
 struct lettre_s {
-	bool lettre;
+	bool terminal;
 	struct lettre_s* succ[26];
 };
 typedef struct lettre_s* dico;
@@ -15,16 +15,12 @@ typedef struct lettre_s* dico;
  * Crée un dictionnaire en initialisant ses valeurs de base ; lettre = true, et tous ses successeurs sont à false.
  */
 dico dictionnaire_vide(void);
-
-//renvoie le sous-dictionnaire associé a un mot, si il existe, NULL sinon
-dico chercher(dico dic,char* mot);
-
 /**
- * Recherche un mot dans le dictionnaire
- * @param dic
- * @param mot
+ * Recherche un mot dans le dictionnaire, et renvoie son sous-dictionnaire associé, si il éxiste, sinon, renvoie NULL
+ * @param dic Dictionnaire dans lequel chercher
+ * @param mot Mot a chercher
  */
-void chercher_mot(dico dic, char* mot);
+dico chercher_mot(dico dic, char* mot);
 
 /**
  * Supprime le dictionnaire
