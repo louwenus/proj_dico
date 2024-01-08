@@ -53,6 +53,8 @@ dico chercher_mot(dico dic,char* mot){
 	}
 	return tmp;
 }
+
+
 void supprimer_dictionnaire(dico dic){
 	if (dic==NULL){return;}
 	for (int i=0;i<26;i++){

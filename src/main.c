@@ -7,11 +7,7 @@
 
 int main(int argc, char* argv[])
 {
-    //assert(argc == 2);
-	/*if(argc == 1)
-	{
-		exit(EXIT_FAILURE);
-	}*/
+    assert(argc == 2);
 	
 	dico dic = dictionnaire_vide();
     FILE* fd = fopen("./fr-reforme1990_court_sans.dic", "r");
@@ -33,15 +29,20 @@ int main(int argc, char* argv[])
     }
     fclose(fd);
 
-    //FILE* correct = fopen(argv[1], "r");
-//    errno = 0;
-//    if (correct == NULL) {
-//        printf ("Erreur lors de l'ouverture du fichier %s : %d (%s)\n", argv[1] , errno , strerror(errno));
-//        return 1;
-//    }
+    FILE* correct = fopen(argv[1], "r");
+    errno = 0;
+    if (correct == NULL) {
+        printf ("Erreur lors de l'ouverture du fichier %s : %d (%s)\n", argv[1] , errno , strerror(errno));
+        return 1;
+    }
 
+    FILE *file_ptr;
+    file_ptr = fopen("a_corriger.txt", "w");
 
-
-
+    while (fscanf(correct, "%s\n", string) == 1) {
+        if (chercher_mot(dic, string) == NULL) {
+            fputs(string, file_ptr);
+        }
+    }
 	return 0;
 }
