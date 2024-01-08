@@ -9,16 +9,29 @@ struct lettre_s {
 };
 typedef struct lettre_s* dico;
 
-/*
+/**
  * Crée un dictionnaire en initialisant ses valeurs de base ; lettre = true, et tous ses successeurs sont à false.
  */
-dico creer_dico();
+dico dictionnaire_vide();
 
-/*
+/**
  * Ajoute un mot au dictionnaire en créant les structures nécessaires.
  * Entrees : dic, dictionnaire ENTIER.
  * 			 mot, chaine de caractère, mot à ajouter.
  */
 void ajouter_mot(dico dic, char* mot);
+
+/**
+ * Recherche un mot dans le dictionnaire
+ * @param dic
+ * @param mot
+ */
+void chercher_mot(dico dic, char* mot);
+
+/**
+ * Supprime le dictionnaire
+ * @param dic
+ */
+void supprimer_dictionnaire(dico dic);
 
 #endif
