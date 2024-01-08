@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dic.h"
+#include "assert.h"
 
 int main(int argc, char* argv[])
 {
+    //assert(argc == 2);
 	/*if(argc == 1)
 	{
 		exit(EXIT_FAILURE);
@@ -21,11 +23,11 @@ int main(int argc, char* argv[])
     char string[100];
     char poubelle[100];
 
-    fscanf(fd, "-");
+    fscanf(fd, "%s", poubelle);
     for (int i = 0; i < nb_mots; ++i) {
-        fscanf(fd, "%s/%s", string, poubelle);
-        ajouter_mot(dic, string);
+        fscanf(fd, "%[^/]%s", string, poubelle);
         printf("%s\n", string);
+        ajouter_mot(dic, string);
     }
     fclose(fd);
 
