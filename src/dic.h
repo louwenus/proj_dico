@@ -5,7 +5,7 @@
 
 struct lettre_s {
 	bool lettre;
-	struct lettre_s* succ[27];
+	struct lettre_s* succ[256];
 };
 typedef struct lettre_s* dico;
 

@@ -6,8 +6,8 @@
 dico creer_dico()
 {
 	dico tmp = (dico)malloc(sizeof(struct lettre_s));
-	tmp->lettre = true;
-	for(int i=0; i<27; i++)
+	tmp->lettre = false;
+	for(int i=0; i<256; i++)
 	{
 		(tmp->succ)[i] = NULL;
 	}
