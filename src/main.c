@@ -18,18 +18,21 @@ int main(int argc, char* argv[])
         return 1;
     }
     int nb_mots = 0;
-    fscanf(fd, "%d", &nb_mots);
+    fscanf(fd, "%d\n", &nb_mots);
 
     char string[100];
     char poubelle[100];
 
-    fscanf(fd, "%s", poubelle);
+    fscanf(fd, "%s\n", poubelle);
     for (int i = 0; i < nb_mots; ++i) {
-        fscanf(fd, "%[^/]%s", string, poubelle);
+        fscanf(fd, "%[^/]%s\n", string, poubelle);
+//        fscanf(fd, "%s", poubelle);
         printf("%s\n", string);
         ajouter_mot(dic, string);
     }
     fclose(fd);
+
+    //FILE* correct = fopen(argv[1], "r");
 
 	return 0;
 }
