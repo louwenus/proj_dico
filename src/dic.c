@@ -18,7 +18,7 @@ void ajouter_mot(dico dic, char* mot)  // Non fini. Problemes avec le NULL, poss
 {
 	dico tmp = dic;
 	int i = 0;
-	while(mot[i] != '\0')
+	while(mot[i] != '\0' && mot[i] != '/')
 	{
 		int succ_a_changer = mot[i]-'a';
 		if((tmp->succ)[succ_a_changer] != NULL)

@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <string.h>
 #include "dic.h"
 #include "assert.h"
 
@@ -24,8 +26,7 @@ int main(int argc, char* argv[])
     char poubelle[100];
 
     fscanf(fd, "%s\n", poubelle);
-    for (int i = 0; i < nb_mots; ++i) {
-        fscanf(fd, "%[^/]%s\n", string, poubelle);
+    while (fscanf(fd, "%s\n", string) == 1) {
 //        fscanf(fd, "%s", poubelle);
         printf("%s\n", string);
         ajouter_mot(dic, string);
@@ -33,6 +34,14 @@ int main(int argc, char* argv[])
     fclose(fd);
 
     //FILE* correct = fopen(argv[1], "r");
+//    errno = 0;
+//    if (correct == NULL) {
+//        printf ("Erreur lors de l'ouverture du fichier %s : %d (%s)\n", argv[1] , errno , strerror(errno));
+//        return 1;
+//    }
+
+
+
 
 	return 0;
 }
