@@ -52,5 +52,5 @@ clean:
 	-rm -rf build
 
 mpropper: clean
-	-rm terminal_defense
+	-rm dico
 
