@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+
+#include "conjugaison.h"
 
 /* Fonction qui prend en argument le texte à tester et l'indice du verbe à conjuguer et identifie le sujet du verbe 
     et renvoie un entier lui correspondant.
@@ -17,31 +16,35 @@
 
     (seuls je, tu, il, on sont traités désolé <3)
 */
-int id_sujet(char* texte, int ind_verbe)
-{
-   int ind_sujet = ind_verbe -2;
-   while(ind_sujet >=0 && texte[ind_sujet] != ' ')
-   {
-    ind_sujet --;
-   }
+int id_sujet(char *mot, dico dict) {
+    if (strcmp(mot, "je")) {
+        return JE;
+    }
 
-   if((texte[ind_sujet] == 'j' || texte[ind_sujet] == 'J') && texte[ind_sujet + 1] == 'e')
-   {
-    return 0;
-   }
+    if (strcmp(mot, "tu")) {
+        return TU;
+    }
 
-   if((texte[ind_sujet] == 't' || texte[ind_sujet] == 'T') && texte[ind_sujet + 1] == 'u')
-   {
-    return 1;
-   }
+    if (strcmp(mot, "il") || strcmp(mot, "elle") || strcmp(mot, "on")) {
+        return PERS_SING;
+    }
 
-   if((texte[ind_sujet] == 'o' || texte[ind_sujet] == 'O') && texte[ind_sujet + 1] == 'n')
-   {
-    return 3;
-   }
+    if (strcmp(mot, "nous")) {
+        return NOUS;
+    }
 
-   if((texte[ind_sujet] == 'i' || texte[ind_sujet] == 'I') && texte[ind_sujet + 1] == 'l' && texte[ind_sujet + 2] == ' ')
-   {
-    return 3;
-   }
+    if (strcmp(mot, "vous")) {
+        return VOUS;
+    }
+
+    if (strcmp(mot, "il") || strcmp(mot, "elle") || strcmp(mot, "on")) {
+        return PERS_PLUR;
+    }
+
+    dico result=chercher_mot(dict,mot );
+    if (result == NULL || !result->terminal) {
+        return PERS_PLUR;
+    } else if (result->terminal) {
+        return PERS_SING;
+    }
 }
