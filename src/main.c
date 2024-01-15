@@ -4,6 +4,7 @@
 #include <errno.h>
 #include <string.h>
 #include "conjugaison.h"
+#include "dic.h"
 #include "main.h"
 #include "assert.h"
 
@@ -64,10 +65,12 @@ int main(int argc, char* argv[])
             string[index]='\0';
             minus[index]='\0';
                 
-            int groupe=est_verbe
-            
-            
-            fputs(string, output);
+            int groupe=est_verbe(chercher_mot(dic, minus));
+            if (groupe != 0){
+                   //conjuger 
+            } else {
+                fputs(string, output);
+            }
 
             last_pers=id_sujet(minus, dic);
 
