@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include "conjugaison.h"
 #include "main.h"
 #include "assert.h"
 
@@ -49,6 +50,7 @@ int main(int argc, char* argv[])
     char minus[100];
     int index=0;
     char in='a';
+    enum PERS last_pers=JE;
 
     while (true) {
         in=getc(input);
@@ -62,8 +64,12 @@ int main(int argc, char* argv[])
             string[index]='\0';
             minus[index]='\0';
                 
-            //TODO: parse
+            int groupe=est_verbe
+            
+            
             fputs(string, output);
+
+            last_pers=id_sujet(minus, dic);
 
             index=0;
             }

@@ -1,3 +1,6 @@
+#ifndef CONJUGAISONH
+#define CONJUGAISONH
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -30,3 +33,5 @@ enum PERS {
     (seuls je, tu, il, on sont traités désolé <3)
 */
 int id_sujet(char *mot, dico dict);
+
+#endif //ifndef CUNJUGAISONH
