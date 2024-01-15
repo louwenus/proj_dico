@@ -69,16 +69,15 @@ static void conju_grp2(char* verbe, enum PERS sujet) {;
     while(verbe[i] != '\0') { i++; }
     switch(sujet) {
         case(JE):
-            verbe[i-2]='i';
-            verbe[i-1]='s';
-            break;
         case(TU):
             verbe[i-2]='i';
             verbe[i-1]='s';
+            verbe[i] = '\0';
             break;
         case(PERS_SING):
             verbe[i-2]='i';
             verbe[i-1]='t';
+            verbe[i] = '\0';
             break;
         case(NOUS):
             verbe[i-2]='i';
@@ -87,6 +86,7 @@ static void conju_grp2(char* verbe, enum PERS sujet) {;
             verbe[i+1]='o';
             verbe[i+2]='n';
             verbe[i+3]='s';
+            verbe[i+4] = '\0';
             break;
         case(VOUS):
             verbe[i-2]='i';
@@ -94,6 +94,7 @@ static void conju_grp2(char* verbe, enum PERS sujet) {;
             verbe[i]='s';
             verbe[i+1]='e';
             verbe[i+2]='z';
+            verbe[i+3] = '\0';
             break;
         case(PERS_PLUR):
             verbe[i-2]='i';
@@ -102,6 +103,7 @@ static void conju_grp2(char* verbe, enum PERS sujet) {;
             verbe[i+1]='e';
             verbe[i+2]='n';
             verbe[i+3]='t';
+            verbe[i+4] = '\0';
             break;
         case ERROR:
             break;
@@ -117,21 +119,26 @@ static void conju_grp1(char* verbe, enum PERS sujet) {
             break;
         case(TU):
             verbe[i-1]='s';
+            verbe[i] = '\0';
             break;
         case(PERS_SING):
             verbe[i-1]='e';
+            verbe[i] = '\0';
             break;
         case(NOUS):
             verbe[i-2]='o';
             verbe[i-1]='n';
             verbe[i]='s';
+            verbe[i + 1] = '\0';
             break;
         case(VOUS):
             verbe[i-1]='z';
+            verbe[i] = '\0';
             break;
         case(PERS_PLUR):
             verbe[i]='n';
             verbe[i+1]='t';
+            verbe[i + 2] = '\0';
             break;
         case ERROR:
             break;
