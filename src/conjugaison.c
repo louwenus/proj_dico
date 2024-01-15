@@ -16,27 +16,27 @@
     (seuls je, tu, il, on sont traités désolé <3)
 */
 enum PERS id_sujet(char *mot, dico dict) {
-    if (strcmp(mot, "je")) {
+    if (strcmp(mot, "je") == 0) {
         return JE;
     }
 
-    if (strcmp(mot, "tu")) {
+    if (strcmp(mot, "tu") == 0) {
         return TU;
     }
 
-    if (strcmp(mot, "il") || strcmp(mot, "elle") || strcmp(mot, "on")) {
+    if (strcmp(mot, "il") == 0 || strcmp(mot, "elle") == 0 || strcmp(mot, "on") == 0) {
         return PERS_SING;
     }
 
-    if (strcmp(mot, "nous")) {
+    if (strcmp(mot, "nous") == 0) {
         return NOUS;
     }
 
-    if (strcmp(mot, "vous")) {
+    if (strcmp(mot, "vous") == 0) {
         return VOUS;
     }
 
-    if (strcmp(mot, "il") || strcmp(mot, "elle") || strcmp(mot, "on")) {
+    if (strcmp(mot, "il") == 0 || strcmp(mot, "elle") == 0 || strcmp(mot, "on") == 0) {
         return PERS_PLUR;
     }
 
