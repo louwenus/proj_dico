@@ -1,14 +1,15 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-#include "dic.h"
+#include "main.h"
 #include "assert.h"
 
-dico init_dico(void){
+dico init_dico(const char * path){
 
     dico dic = dictionnaire_vide();
-    FILE* fd = fopen("./fr-reforme1990_court_sans.dic", "r");
+    FILE* fd = fopen(path, "r");
     if (fd == NULL) {
         printf("Erreur lors de l'ouverture du fichier fr-reforme1990_court_sans.dic");
         exit(1);
@@ -27,10 +28,13 @@ dico init_dico(void){
 
 int main(int argc, char* argv[])
 {
-  assert(argc == 2);
+  if(argc != 4){
+        printf("Usage: %s fichier_dico.dic fichier_entree.txt fichier_sortie.txt",argv[0]);
+        exit(1);
+    }
 
-	dico dic = init_dico();	
-    FILE* input = fopen(argv[1], "r");
+	dico dic = init_dico(argv[1]);	
+    FILE* input = fopen(argv[2], "r");
     errno = 0;
     if (input == NULL) {
         printf ("Erreur lors de l'ouverture du fichier %s : %d (%s)\n", argv[1] , errno , strerror(errno));
@@ -38,19 +42,33 @@ int main(int argc, char* argv[])
     }
 
     FILE *output;
-    output = fopen("a_corriger.txt", "w");
+    output = fopen(argv[3], "w");
 
     
-   char string[100];
-    char poubelle[100];
+    char string[100];
+    int index=0;
+    char in='a';
 
-    while (fscanf(input, "%s\n", string) == 1) {
-        dico result=chercher_mot(dic,string );
-        if (result == NULL || !result->terminal) {
+    while (true) {
+        in=getc(input);
+        if (in==EOF)break;
+        if (isalpha(in)){
+            string[index]=in;
+            index++;
+        } else {
+            if (index>0){
+            string[index]='\0';
+                
+            //TODO: parse
             fputs(string, output);
-            fputs("\n", output);
+
+            index=0;
+            }
+            //ensuite on copie le char spécial dans la sortie
+            fputc(in,output);
         }
     }
     fclose(input);
+    fclose(output);
 	return 0;
 }
