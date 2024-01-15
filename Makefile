@@ -1,8 +1,7 @@
 WARNINGS := -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align \
             -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations \
             -Wredundant-decls -Wnested-externs -Winline -Wno-long-long \
-            -Wstrict-prototypes
-			#-Wconversion
+            -Wstrict-prototypes -Wconversion
 
 CFLAGS=-std=c99 $(WARNINGS) -Isrc/ 
 LDFLAGS=${WARNINGS} 
@@ -13,6 +12,7 @@ DEBUG_FLAGS=-ggdb -g3 -O0 -fno-inline
 SOURCES=
 SOURCES+=dic.c
 SOURCES+=main.c
+SOURCES+=conjugaison.c
 
 
 OBJECTS  := $(patsubst %.c,build/%.o,$(SOURCES))
