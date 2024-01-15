@@ -15,7 +15,7 @@ dico dictionnaire_vide()
 	return tmp;
 }
 
-void ajouter_mot(dico dic, char* mot)  // Non fini. Problemes avec le NULL, possibles erreurs. normalement dictionnaire_vide() marche. Désolé <3
+void ajouter_mot(dico dic, char* mot)
 {
 	dico tmp = dic;
 	int i = 0;
