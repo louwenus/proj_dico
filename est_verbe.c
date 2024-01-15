@@ -3,9 +3,12 @@
 #include <stdbool.h>
 
 void est_verbe(v) {
-    while(v[i]=!'/')
+    if v.type[1]='a'&& v[2]=0
     {
-        i++;
+        v.type =1;
     }
-    return v[i]>='a';
+    if v[1] ='f'
+    {    
+        v.type =2;
+    }    
 }
