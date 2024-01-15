@@ -2,13 +2,13 @@
 #include "fr-reforme1990_court_sans.dic"
 #include <stdbool.h>
 
-void est_verbe(v) {
-    if (v[1]=='f' && v[2]==0)
+int est_verbe(v) {
+    if (v.type[1]=='f')
     {    
-        v.type =2;
+       return 2;
     }
     else
     {
-        v.type=1;
+       return 1;
     }
 }
