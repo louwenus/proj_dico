@@ -11,6 +11,7 @@ enum PERS {
     NOUS,
     VOUS,
     PERS_PLUR,
+    ERROR
 };
 
 
@@ -26,7 +27,12 @@ enum PERS {
 
     Si le sujet est un nom commun -> 3 pers du singulier s'il est dans le dictionnaire, pluriel sinon
     (on part du principe que le mot précédant le verbe est le sujet et qu'il ne s'agit pas d'un adjectif)
-
-    (seuls je, tu, il, on sont traités désolé <3)
 */
-int id_sujet(char *mot, dico dict);
+enum PERS id_sujet(char *mot, dico dict);
+
+/**
+ *
+ * @param v
+ * @return
+ */
+int est_verbe(dico v);
