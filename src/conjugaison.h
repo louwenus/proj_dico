@@ -7,6 +7,9 @@
 #include <ctype.h>
 #include "string.h"
 #include "dic.h"
+#include "assert.h"
+
+
 enum PERS {
     JE,
     TU,
@@ -18,25 +21,20 @@ enum PERS {
 };
 
 
-/** Fonction qui prend en argument le texte à tester et l'indice du verbe à conjuguer et identifie le sujet du verbe
-    et renvoie un entier lui correspondant.
-
-    0: je
-    1: tu
-    2: il/elle/on
-    3: nous
-    4: vous
-    5: ils/elles
-
-    Si le sujet est un nom commun -> 3 pers du singulier s'il est dans le dictionnaire, pluriel sinon
-    (on part du principe que le mot précédant le verbe est le sujet et qu'il ne s'agit pas d'un adjectif)
-*/
+/**
+ * Prend un mot considéré comme le sujet et donne l'identifiant correspondant à la personne à conjuguer le verbe
+ * @param mot le sujet de la phrase
+ * @param dict le dictionnaire créé avant
+ * @return l'identifiant de la personne à conjuguer
+ */
 enum PERS id_sujet(char *mot, dico dict);
 
 /**
- *
+ * Prends un mot sous forme de dictionnaire et renvoie le groupe du verbe si s'en est un
  * @param v
  * @return
  */
 int est_verbe(dico v);
+
+void conjug_verbe(char* verbe, enum PERS sujet, int groupe);
 #endif //ifndef CONJUGAISONH
