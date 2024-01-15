@@ -67,10 +67,9 @@ int main(int argc, char* argv[])
                 
             int groupe=est_verbe(chercher_mot(dic, minus));
             if (groupe != 0){
-                   //conjuger 
-            } else {
-                fputs(string, output);
+                   conjug_verbe(string, last_pers, groupe);
             }
+            fputs(string, output);
 
             last_pers=id_sujet(minus, dic);
 
