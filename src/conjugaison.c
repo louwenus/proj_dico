@@ -16,7 +16,7 @@
 
     (seuls je, tu, il, on sont traités désolé <3)
 */
-int id_sujet(char *mot, dico dict) {
+enum PERS id_sujet(char *mot, dico dict) {
     if (strcmp(mot, "je")) {
         return JE;
     }
@@ -41,10 +41,23 @@ int id_sujet(char *mot, dico dict) {
         return PERS_PLUR;
     }
 
-    dico result=chercher_mot(dict,mot );
+    dico result = chercher_mot(dict, mot);
     if (result == NULL || !result->terminal) {
         return PERS_PLUR;
     } else if (result->terminal) {
         return PERS_SING;
+    }
+
+    return ERROR;
+}
+
+int est_verbe(dico v) {
+    if (islower(v->type[0])) {
+        if (v->type[0] == 'f') {
+            return 2;
+        }
+        return 1;
+    } else {
+        return 0;
     }
 }
