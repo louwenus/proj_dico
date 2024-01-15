@@ -8,6 +8,7 @@
 struct lettre_s {
 	bool terminal;
 	struct lettre_s* succ[26];
+    char type[10];
 };
 typedef struct lettre_s* dico;
 

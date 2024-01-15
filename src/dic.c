@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include "dic.h"
 
 dico dictionnaire_vide()
@@ -32,6 +33,8 @@ void ajouter_mot(dico dic, char* mot)  // Non fini. Problemes avec le NULL, poss
 		}
 	i++;
 	}
+    if (mot[i]=='/') i++;
+    strcpy(tmp->type,&mot[i]);
 	tmp->terminal = true;
 }
 
