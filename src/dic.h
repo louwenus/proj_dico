@@ -1,8 +1,7 @@
+#ifndef DICH
+#define DICH
+
 #include <stdbool.h>
-
-#ifndef DIC_H
-#define DIC_H
-
 
 
 struct lettre_s {
@@ -37,4 +36,4 @@ dico chercher_mot(dico dic, char* mot);
  */
 void supprimer_dictionnaire(dico dic);
 
-#endif
+#endif //ifndef DICH
