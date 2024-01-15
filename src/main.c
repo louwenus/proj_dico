@@ -46,6 +46,7 @@ int main(int argc, char* argv[])
 
     
     char string[100];
+    char minus[100];
     int index=0;
     char in='a';
 
@@ -54,10 +55,12 @@ int main(int argc, char* argv[])
         if (in==EOF)break;
         if (isalpha(in)){
             string[index]=in;
+            minus[index]=tolower(in);
             index++;
         } else {
             if (index>0){
             string[index]='\0';
+            minus[index]='\0';
                 
             //TODO: parse
             fputs(string, output);
