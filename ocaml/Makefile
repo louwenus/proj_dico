@@ -1,6 +1,6 @@
 SOURCES=
+SOURCES+=correction.ml
 SOURCES+=main.ml
-
 
 .PHONY: all help clean mpropper
 
