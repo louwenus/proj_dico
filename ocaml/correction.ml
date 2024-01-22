@@ -1,6 +1,6 @@
-type genre = Masc | Fem | Nan;;
+type genre = Masc | Fem | None;;
 type nb = Sing | Plur | None;;
-type pers = Je | Tu | Sing3 | Nous | Vous | Plur3 | Nil;;
+type pers = Je | Tu | Sing3 | Nous | Vous | Plur3 | None;;
 
 type verbe = { content: string; sujet: pers; };;
 type nom = { content: string; gender: genre; count: nb }
