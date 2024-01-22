@@ -1,3 +1,7 @@
-build/
+c/build/
 dico
+c/dico
 .idea/
+ocaml/build/
+correct_ml
+ocaml/correct_ml

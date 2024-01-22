@@ -40,6 +40,7 @@ help:
 
 dico: $(OBJECTS)
 	@$(CC) $^ $(LDFLAGS) -o dico
+	cp dico ../dico
 	@echo "La compilation a réussie! Le programme s'apelle dico, lancez le en terminal avec la commande ./dico"
 
 build:
@@ -53,4 +54,5 @@ clean:
 
 mpropper: clean
 	-rm dico
+	-rm ../dico
 
