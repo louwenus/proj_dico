@@ -1,58 +1,30 @@
-WARNINGS := -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align \
-            -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations \
-            -Wredundant-decls -Wnested-externs -Winline -Wno-long-long \
-            -Wstrict-prototypes -Wconversion
-
-CFLAGS=-std=c99 $(WARNINGS) -Isrc/ 
-LDFLAGS=${WARNINGS} 
-
-RELEASE_FLAGS=-O3
-DEBUG_FLAGS=-ggdb -g3 -O0 -fno-inline
-
 SOURCES=
-SOURCES+=dic.c
-SOURCES+=main.c
-SOURCES+=conjugaison.c
+SOURCES+=main.ml
 
 
-OBJECTS  := $(patsubst %.c,build/%.o,$(SOURCES))
-DEPFILES := $(patsubst %.o,%.d,$(OBJECTS))
+.PHONY: all help clean mpropper
 
-.PHONY: all debug help clean mpropper
-
-all: CFLAGS+=$(RELEASE_FLAGS)
-all: LDFLAGS+=-s $(RELEASE_FLAGS)
-all: dico
-
--include $(DEPFILES)
-
-debug: CFLAGS+=$(DEBUG_FLAGS)
-debug: LDFLAGS+=$(DEBUG_FLAGS)
-debug: dico
+all: correct_ml
 
 help:
-	@echo "TLDR; Makefile help"
+	@echo "Makefile help"
 	@echo "    make             Compiles and links the program (stripped)"
-	@echo "    make debug       Compiles and links the program with debugging flags"
-	@echo "    make clean       Cleans compilation temporary files (slow down subsequent ones)"
 	@echo "    make mpropper    Cleans compilation files and executable"
 	@echo "    make help        Displays this help"
 
-dico: $(OBJECTS)
-	@$(CC) $^ $(LDFLAGS) -o dico
-	cp dico ../dico
-	@echo "La compilation a réussie! Le programme s'apelle dico, lancez le en terminal avec la commande ./dico"
+correct_ml: build $(SOURCES)
+	cp $(SOURCES) build/
+	cd build; \
+	ocamlopt -o ../correct_ml $(SOURCES)
+	cp correct_ml ../correct_ml
+	@echo "La compilation a réussie! Le programme s'apelle correct_ml, lancez le en terminal avec la commande ./correct_ml"
 
 build:
-	@mkdir -p build
-		
-build/%.o: src/%.c Makefile build
-	@$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
-
+	mkdir build
 clean:
-	-rm -rf build
-
+	rm -rf build
+		
 mpropper: clean
-	-rm dico
-	-rm ../dico
+	-rm correct_ml
+	-rm ../correct_ml
 
